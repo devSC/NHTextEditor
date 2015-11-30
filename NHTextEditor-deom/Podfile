@@ -1,7 +1,5 @@
 platform :ios, '7.0'
 
-
-pod 'ZSSRichTextEditor'
 pod 'YYKit'
 pod 'Masonry'
 pod "Reveal-iOS-SDK", :configurations => ['Debug']

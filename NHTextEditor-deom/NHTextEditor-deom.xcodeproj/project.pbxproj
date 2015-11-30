@@ -17,6 +17,10 @@
 		C85369881C0BF201000A7B1D /* NHTextEditor_deomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369871C0BF201000A7B1D /* NHTextEditor_deomTests.m */; };
 		C85369941C0BFDA0000A7B1D /* NHTextEditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369931C0BFDA0000A7B1D /* NHTextEditorController.m */; };
 		C85369971C0BFFFC000A7B1D /* NHTextEditorToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369961C0BFFFC000A7B1D /* NHTextEditorToolBar.m */; };
+		C853699A1C0C0C11000A7B1D /* NHTextEditorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369991C0C0C11000A7B1D /* NHTextEditorManager.m */; };
+		C853699D1C0C0DE1000A7B1D /* NHEditorControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C853699C1C0C0DE1000A7B1D /* NHEditorControllerCell.m */; };
+		C85369A21C0C0F74000A7B1D /* NHAwesomeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C853699F1C0C0F74000A7B1D /* NHAwesomeTextView.m */; };
+		C85369A31C0C0F74000A7B1D /* NHInternalTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369A11C0C0F74000A7B1D /* NHInternalTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,14 @@
 		C85369931C0BFDA0000A7B1D /* NHTextEditorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHTextEditorController.m; sourceTree = "<group>"; };
 		C85369951C0BFFFC000A7B1D /* NHTextEditorToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHTextEditorToolBar.h; sourceTree = "<group>"; };
 		C85369961C0BFFFC000A7B1D /* NHTextEditorToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHTextEditorToolBar.m; sourceTree = "<group>"; };
+		C85369981C0C0C11000A7B1D /* NHTextEditorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHTextEditorManager.h; sourceTree = "<group>"; };
+		C85369991C0C0C11000A7B1D /* NHTextEditorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHTextEditorManager.m; sourceTree = "<group>"; };
+		C853699B1C0C0DE1000A7B1D /* NHEditorControllerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHEditorControllerCell.h; sourceTree = "<group>"; };
+		C853699C1C0C0DE1000A7B1D /* NHEditorControllerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHEditorControllerCell.m; sourceTree = "<group>"; };
+		C853699E1C0C0F74000A7B1D /* NHAwesomeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHAwesomeTextView.h; sourceTree = "<group>"; };
+		C853699F1C0C0F74000A7B1D /* NHAwesomeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHAwesomeTextView.m; sourceTree = "<group>"; };
+		C85369A01C0C0F74000A7B1D /* NHInternalTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHInternalTextView.h; sourceTree = "<group>"; };
+		C85369A11C0C0F74000A7B1D /* NHInternalTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHInternalTextView.m; sourceTree = "<group>"; };
 		D6579A2C2B50BD5043A87881 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,8 +129,13 @@
 				C85369741C0BF201000A7B1D /* ViewController.m */,
 				C85369921C0BFDA0000A7B1D /* NHTextEditorController.h */,
 				C85369931C0BFDA0000A7B1D /* NHTextEditorController.m */,
+				C853699B1C0C0DE1000A7B1D /* NHEditorControllerCell.h */,
+				C853699C1C0C0DE1000A7B1D /* NHEditorControllerCell.m */,
 				C85369951C0BFFFC000A7B1D /* NHTextEditorToolBar.h */,
 				C85369961C0BFFFC000A7B1D /* NHTextEditorToolBar.m */,
+				C85369981C0C0C11000A7B1D /* NHTextEditorManager.h */,
+				C85369991C0C0C11000A7B1D /* NHTextEditorManager.m */,
+				C85369A41C0C0F7B000A7B1D /* TextVeiw */,
 				C85369761C0BF201000A7B1D /* Main.storyboard */,
 				C85369791C0BF201000A7B1D /* Assets.xcassets */,
 				C853697B1C0BF201000A7B1D /* LaunchScreen.storyboard */,
@@ -143,6 +160,17 @@
 				C85369891C0BF201000A7B1D /* Info.plist */,
 			);
 			path = "NHTextEditor-deomTests";
+			sourceTree = "<group>";
+		};
+		C85369A41C0C0F7B000A7B1D /* TextVeiw */ = {
+			isa = PBXGroup;
+			children = (
+				C853699E1C0C0F74000A7B1D /* NHAwesomeTextView.h */,
+				C853699F1C0C0F74000A7B1D /* NHAwesomeTextView.m */,
+				C85369A01C0C0F74000A7B1D /* NHInternalTextView.h */,
+				C85369A11C0C0F74000A7B1D /* NHInternalTextView.m */,
+			);
+			name = TextVeiw;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,9 +324,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C853699D1C0C0DE1000A7B1D /* NHEditorControllerCell.m in Sources */,
+				C85369A31C0C0F74000A7B1D /* NHInternalTextView.m in Sources */,
 				C85369751C0BF201000A7B1D /* ViewController.m in Sources */,
+				C853699A1C0C0C11000A7B1D /* NHTextEditorManager.m in Sources */,
 				C85369941C0BFDA0000A7B1D /* NHTextEditorController.m in Sources */,
 				C85369971C0BFFFC000A7B1D /* NHTextEditorToolBar.m in Sources */,
+				C85369A21C0C0F74000A7B1D /* NHAwesomeTextView.m in Sources */,
 				C85369721C0BF201000A7B1D /* AppDelegate.m in Sources */,
 				C853696F1C0BF201000A7B1D /* main.m in Sources */,
 			);
