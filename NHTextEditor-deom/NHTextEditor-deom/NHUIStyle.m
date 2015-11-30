@@ -7,7 +7,6 @@
 //
 
 #import "NHUIStyle.h"
-#import "UIColor+Builder.h"
 #import <objc/runtime.h>
 
 @implementation NHUIStyle
@@ -160,9 +159,9 @@
 }
 
 
-+ (UIColor *)colorFromHexString:(NSString *)hexString {
-    return [UIColor colorFromHexString:hexString];
-}
+//+ (UIColor *)colorFromHexString:(NSString *)hexString {
+//    return [UIColor colorFromHexString:hexString];
+//}
 /*---------------------------------------
  * Font
  *---------------------------------------*/

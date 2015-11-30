@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol NHEditorControllerCellDelegate <NSObject>
+
+- (void)editorControllerCellDidEndEdit;
+
+@end
+
 @interface NHEditorControllerCell : UICollectionViewCell
+
+@property (weak, nonatomic) id<NHEditorControllerCellDelegate> delegate;
+
+- (void)setPlaceHolder:(NSString *)placeHolder;
+
+- (void)shouldBecomeFirstResponder;
+- (void)shouldResignFirstResponder;
 
 @end

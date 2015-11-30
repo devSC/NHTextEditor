@@ -21,6 +21,9 @@
 		C853699D1C0C0DE1000A7B1D /* NHEditorControllerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C853699C1C0C0DE1000A7B1D /* NHEditorControllerCell.m */; };
 		C85369A21C0C0F74000A7B1D /* NHAwesomeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C853699F1C0C0F74000A7B1D /* NHAwesomeTextView.m */; };
 		C85369A31C0C0F74000A7B1D /* NHInternalTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369A11C0C0F74000A7B1D /* NHInternalTextView.m */; };
+		C85369A71C0C2DFA000A7B1D /* NHTextEditorToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369A61C0C2DFA000A7B1D /* NHTextEditorToolBarCell.m */; };
+		C85369AA1C0C2F08000A7B1D /* NHUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369A91C0C2F08000A7B1D /* NHUIStyle.m */; };
+		C85369AF1C0C3B77000A7B1D /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369AE1C0C3B77000A7B1D /* DAKeyboardControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,13 @@
 		C853699F1C0C0F74000A7B1D /* NHAwesomeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHAwesomeTextView.m; sourceTree = "<group>"; };
 		C85369A01C0C0F74000A7B1D /* NHInternalTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHInternalTextView.h; sourceTree = "<group>"; };
 		C85369A11C0C0F74000A7B1D /* NHInternalTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHInternalTextView.m; sourceTree = "<group>"; };
+		C85369A51C0C2DFA000A7B1D /* NHTextEditorToolBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHTextEditorToolBarCell.h; sourceTree = "<group>"; };
+		C85369A61C0C2DFA000A7B1D /* NHTextEditorToolBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHTextEditorToolBarCell.m; sourceTree = "<group>"; };
+		C85369A81C0C2F08000A7B1D /* NHUIStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHUIStyle.h; sourceTree = "<group>"; };
+		C85369A91C0C2F08000A7B1D /* NHUIStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHUIStyle.m; sourceTree = "<group>"; };
+		C85369AD1C0C3B77000A7B1D /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
+		C85369AE1C0C3B77000A7B1D /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
+		C85369B01C0C3C42000A7B1D /* NHEditorHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NHEditorHeader.h; sourceTree = "<group>"; };
 		D6579A2C2B50BD5043A87881 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,12 +139,17 @@
 				C85369741C0BF201000A7B1D /* ViewController.m */,
 				C85369921C0BFDA0000A7B1D /* NHTextEditorController.h */,
 				C85369931C0BFDA0000A7B1D /* NHTextEditorController.m */,
+				C85369B01C0C3C42000A7B1D /* NHEditorHeader.h */,
 				C853699B1C0C0DE1000A7B1D /* NHEditorControllerCell.h */,
 				C853699C1C0C0DE1000A7B1D /* NHEditorControllerCell.m */,
 				C85369951C0BFFFC000A7B1D /* NHTextEditorToolBar.h */,
 				C85369961C0BFFFC000A7B1D /* NHTextEditorToolBar.m */,
+				C85369A51C0C2DFA000A7B1D /* NHTextEditorToolBarCell.h */,
+				C85369A61C0C2DFA000A7B1D /* NHTextEditorToolBarCell.m */,
 				C85369981C0C0C11000A7B1D /* NHTextEditorManager.h */,
 				C85369991C0C0C11000A7B1D /* NHTextEditorManager.m */,
+				C85369AC1C0C3B77000A7B1D /* DAKeyboardControl */,
+				C85369AB1C0C2F16000A7B1D /* NHUIStyle */,
 				C85369A41C0C0F7B000A7B1D /* TextVeiw */,
 				C85369761C0BF201000A7B1D /* Main.storyboard */,
 				C85369791C0BF201000A7B1D /* Assets.xcassets */,
@@ -171,6 +186,24 @@
 				C85369A11C0C0F74000A7B1D /* NHInternalTextView.m */,
 			);
 			name = TextVeiw;
+			sourceTree = "<group>";
+		};
+		C85369AB1C0C2F16000A7B1D /* NHUIStyle */ = {
+			isa = PBXGroup;
+			children = (
+				C85369A81C0C2F08000A7B1D /* NHUIStyle.h */,
+				C85369A91C0C2F08000A7B1D /* NHUIStyle.m */,
+			);
+			name = NHUIStyle;
+			sourceTree = "<group>";
+		};
+		C85369AC1C0C3B77000A7B1D /* DAKeyboardControl */ = {
+			isa = PBXGroup;
+			children = (
+				C85369AD1C0C3B77000A7B1D /* DAKeyboardControl.h */,
+				C85369AE1C0C3B77000A7B1D /* DAKeyboardControl.m */,
+			);
+			path = DAKeyboardControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,10 +358,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C853699D1C0C0DE1000A7B1D /* NHEditorControllerCell.m in Sources */,
+				C85369AF1C0C3B77000A7B1D /* DAKeyboardControl.m in Sources */,
+				C85369AA1C0C2F08000A7B1D /* NHUIStyle.m in Sources */,
 				C85369A31C0C0F74000A7B1D /* NHInternalTextView.m in Sources */,
 				C85369751C0BF201000A7B1D /* ViewController.m in Sources */,
 				C853699A1C0C0C11000A7B1D /* NHTextEditorManager.m in Sources */,
 				C85369941C0BFDA0000A7B1D /* NHTextEditorController.m in Sources */,
+				C85369A71C0C2DFA000A7B1D /* NHTextEditorToolBarCell.m in Sources */,
 				C85369971C0BFFFC000A7B1D /* NHTextEditorToolBar.m in Sources */,
 				C85369A21C0C0F74000A7B1D /* NHAwesomeTextView.m in Sources */,
 				C85369721C0BF201000A7B1D /* AppDelegate.m in Sources */,

@@ -10,4 +10,6 @@
 #define NHEditorHeader_h
 
 
+#define kWeakSelf __weak typeof(self) wself = self;
+
 #endif /* NHEditorHeader_h */

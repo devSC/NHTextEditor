@@ -9,19 +9,22 @@
 #import "NHEditorControllerCell.h"
 #import "NHAwesomeTextView.h"
 
+#import <YYTextView.h>
+
 #import <Masonry.h>
 //utils
 
 
-@interface NHEditorControllerCell ()<NHAwesomeTextViewDelegate>
+@interface NHEditorControllerCell ()<NHAwesomeTextViewDelegate, YYTextViewDelegate>
 
-@property (strong, nonatomic) NHAwesomeTextView *textView;
+@property (strong, nonatomic) YYTextView *textView;
 
 @end
 
 @implementation NHEditorControllerCell {
     CGFloat _currentTextViewHeight;
 }
+@synthesize delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -33,31 +36,60 @@
     }
     return self;
 }
+- (void)shouldBecomeFirstResponder {
+        if ([self.textView becomeFirstResponder]) {
+            NSLog(@"begin editor");
+        }
+        else {
+            NSLog(@"can't editor");
+        }
+}
+- (void)shouldResignFirstResponder {
+    if ([self.textView resignFirstResponder]) {
+        NSLog(@"end editor");
+    }
+    else {
+        NSLog(@"can't end editor");
+    }}
 
-#pragma mark - NHAwesomeTextViewDelegate
-- (BOOL)awesomeTextViewShouldBeginEditing:(NHAwesomeTextView *)textView {
+- (void)prepareForReuse {
+//    self.textView = nil;
+    NSLog(@" %s ", __FUNCTION__);
+}
+- (void)shouldBeginEditor {
+//    if (!self.textView.isFirstResponder) {
+        [self.textView becomeFirstResponder];
+//    }
+    NSLog(@"becomeFirstResponder textView: %@", self.textView);
+}
+
+- (void)setPlaceHolder:(NSString *)placeHolder {
+    [self.textView setPlaceholderText:placeHolder];
+    [self.textView becomeFirstResponder];
+}
+
+#pragma mark - YYTextViewDelegate
+- (BOOL)textView:(YYTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if (([@"\n" isEqualToString:text])) {
+//        [self.textView resignFirstResponder];
+        if ([delegate respondsToSelector:@selector(editorControllerCellDidEndEdit)]) {
+            [delegate editorControllerCellDidEndEdit];
+        }
+        return NO;
+    }
     return YES;
 }
-
-
-- (void)awesomeTextViewDidChange:(NHAwesomeTextView *)textView {
-    NSLog(@"%@", textView.text);
+- (BOOL)textViewShouldEndEditing:(YYTextView *)textView {
+    return YES;
 }
-- (void)awesomeTextView:(NHAwesomeTextView *)textView willChangeHeight:(CGFloat)height {
-    if (_currentTextViewHeight != height) {
-//        if ([self.delegate respondsToSelector:@selector(inputBarDidChangeTheHeight:)]) {
-//            [self.delegate inputBarDidChangeTheHeight:height + NHInputBarEdge * 2];
-//        }
-        _currentTextViewHeight = height;
-        NSLog(@"height: %f", height);
-    }
+- (void)textViewDidEndEditing:(YYTextView *)textView {
 }
-
 
 #pragma mark - Pravite method
 
 - (void)_configureSubview {
     [self.contentView addSubview:self.textView];
+    [self.textView becomeFirstResponder];
     
 }
 
@@ -67,16 +99,12 @@
     }];
 }
 
-
-
-- (NHAwesomeTextView *)textView {
+- (YYTextView *)textView {
     if (!_textView) {
-        _textView = [[NHAwesomeTextView alloc] init];
+        _textView = [[YYTextView alloc] init];
         _textView.delegate = self;
-        _textView.maxNumberOfLine = 4;
-        _textView.returnKeyType = UIReturnKeySend;
+        _textView.returnKeyType = UIReturnKeyDefault;
         _textView.font = [UIFont systemFontOfSize:15];
-        _textView.placeHolder = @"start to chat";
     }
     return _textView;
 }

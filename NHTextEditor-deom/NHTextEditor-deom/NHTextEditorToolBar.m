@@ -22,17 +22,39 @@
     if (self) {
         
         [self addSubview:self.collectionView];
-        
     }
     return self;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+#pragma mark - UICollectionViewDataSource
+//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+//    return 1;
+//}
+//
+//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+//    return self.dataSource.count;
+//}
+//- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NHEditorControllerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NHEditorControllerCellIdenfitier forIndexPath:indexPath];
+//    cell.backgroundColor = [UIColor redColor];
+//    return cell;
+//    
+//}
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//}
+//
+//
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+//    return 0;
+//}
+//
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+//    return 0;
+//}
+//
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    return CGSizeMake(self.view.width, 100);
+//}
 
 - (UICollectionView *)collectionView {
     if (!_collectionView) {

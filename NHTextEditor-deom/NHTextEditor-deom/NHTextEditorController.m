@@ -14,8 +14,10 @@
 
 //utils
 #import <Masonry.h>
+#import "DAKeyboardControl.h"
+#import "NHEditorHeader.h"
 
-@interface NHTextEditorController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface NHTextEditorController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NHEditorControllerCellDelegate>
 
 @property (strong, nonatomic) UICollectionView *collectionView;
 
@@ -26,6 +28,9 @@
 @property (strong, nonatomic) MASConstraint *toolBarBottomConstraint;
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
+
+@property (strong, nonatomic) NSIndexPath *firstResponderIndexPath; //记录那个Cell是第一响应者
+
 @end
 
 static CGFloat kNHEditorToolBarHeight = 49;
@@ -33,6 +38,10 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 
 @implementation NHTextEditorController
 
+- (void)dealloc
+{
+    [self.view removeKeyboardControl];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -47,7 +56,49 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
     [self _initialDataSource];
     [self _configureSubview];
     [self _configureSubviewConstraint];
+    
+    
+    kWeakSelf
+    [self.view addKeyboardPanningWithFrameBasedActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
+        
+    } constraintBasedActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
+        wself.toolBarBottomConstraint.offset = - CGRectGetHeight(keyboardFrameInView);
+        [wself.view layoutIfNeeded];
+    }];
 }
+
+#pragma mark - 
+
+- (void)editorControllerCellDidEndEdit {
+    /*
+     插入一个新的Cell
+     并且Cell的TextView为第一响应
+     */
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.dataSource.count inSection:0];
+    [self.dataSource addObject:@"1"];
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView insertItemsAtIndexPaths:@[indexPath]];
+        
+    } completion:^(BOOL finished) {
+        NSLog(@"插入成功");
+        if (finished) {
+            self.firstResponderIndexPath = indexPath;
+            [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+            //delay invoke, fix the reuse cell can't became first responder
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                NHEditorControllerCell *oldCell = (NHEditorControllerCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:(indexPath.item - 1) inSection:indexPath.section]];;
+                [oldCell shouldResignFirstResponder];
+
+                NHEditorControllerCell *cell = (NHEditorControllerCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+                [cell shouldBecomeFirstResponder];
+            });
+        }
+    }];
+    
+}
+
+
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -58,7 +109,13 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NHEditorControllerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NHEditorControllerCellIdenfitier forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    cell.delegate = self;
+    cell.backgroundColor = [UIColor whiteColor];
+//    if ([self _cellShouldBeginEditorAtIndexPath:indexPath]) {
+//        [cell shouldBecomeFirstResponder];
+//    }
+    [cell setPlaceHolder:[NSString stringWithFormat:@"section: %ld, item: %ld", indexPath.section, indexPath.row]];
+                                                                                                                                                 
     return cell;
 
 }
@@ -68,7 +125,7 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 0;
+    return 10;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
@@ -82,11 +139,26 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 
 
 #pragma mark - Pravite method
+
+- (BOOL)_cellShouldBeginEditorAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.firstResponderIndexPath.item == indexPath.item &&
+        self.firstResponderIndexPath.section == indexPath.section) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
+
 - (void)_initialDataSource {
     [self.dataSource addObject:@""];
+    
+    self.firstResponderIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
 }
 
 - (void)_configureSubview {
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.collectionView];
     
     [self.collectionView registerClass:[NHEditorControllerCell class] forCellWithReuseIdentifier:NHEditorControllerCellIdenfitier];
@@ -97,7 +169,7 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 - (void)_configureSubviewConstraint {
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(self.view);
-        self.collectionViewBottomConstraint = make.bottom.mas_equalTo(-kNHEditorToolBarHeight);
+        self.collectionViewBottomConstraint = make.bottom.mas_equalTo(self.editorToolBar.mas_top);
     }];
     [self.editorToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
@@ -127,6 +199,7 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 - (NHTextEditorToolBar *)editorToolBar {
     if (!_editorToolBar) {
         _editorToolBar = [[NHTextEditorToolBar alloc] init];
+        _editorToolBar.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.2];
     }
     return _editorToolBar;
 }
