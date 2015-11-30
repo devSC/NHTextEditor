@@ -3173,7 +3173,6 @@ typedef NS_ENUM(NSUInteger, YYTextMoveDirection) {
     }
     [self replaceRange:_selectedTextRange withText:text];
 }
-
 - (void)deleteBackward {
     [self _updateIfNeeded];
     NSRange range = _selectedTextRange.asRange;

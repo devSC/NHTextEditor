@@ -15,7 +15,7 @@
 //utils
 
 
-@interface NHEditorControllerCell ()<NHAwesomeTextViewDelegate, YYTextViewDelegate>
+@interface NHEditorControllerCell ()<NHAwesomeTextViewDelegate, YYTextViewDelegate, UIKeyInput>
 
 @property (strong, nonatomic) YYTextView *textView;
 
@@ -71,7 +71,6 @@
 #pragma mark - YYTextViewDelegate
 - (BOOL)textView:(YYTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if (([@"\n" isEqualToString:text])) {
-//        [self.textView resignFirstResponder];
         if ([delegate respondsToSelector:@selector(editorControllerCellDidEndEdit)]) {
             [delegate editorControllerCellDidEndEdit];
         }
@@ -84,6 +83,8 @@
 }
 - (void)textViewDidEndEditing:(YYTextView *)textView {
 }
+
+
 
 #pragma mark - Pravite method
 

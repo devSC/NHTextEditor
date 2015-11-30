@@ -17,7 +17,7 @@
 #import "DAKeyboardControl.h"
 #import "NHEditorHeader.h"
 
-@interface NHTextEditorController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NHEditorControllerCellDelegate>
+@interface NHTextEditorController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NHEditorControllerCellDelegate, UIKeyInput>
 
 @property (strong, nonatomic) UICollectionView *collectionView;
 
@@ -135,6 +135,27 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(self.view.width, 100);
 }
+
+
+#pragma mark - UIKeyInput
+- (BOOL)hasText {
+//    if (self.textView.text) {
+        return YES;
+//    }
+//    else {
+//        return NO;
+//    }
+}
+- (void)insertText:(NSString *)text {
+//    [self.textView insertText:text];
+}
+
+- (void)deleteBackward {
+//    if (!self.textView.text) {
+        NSLog(@"删除Cell");
+//    }
+}
+
 
 
 
