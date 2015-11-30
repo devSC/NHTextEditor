@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#import "NHTextEditorController.h"
+
 @interface ViewController ()
 
 @end
@@ -22,6 +24,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)editorButton:(id)sender {
+    NHTextEditorController *editorController = [[NHTextEditorController alloc] init];
+    [self.navigationController pushViewController:editorController animated:YES];
 }
 
 @end
