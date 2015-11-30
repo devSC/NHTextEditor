@@ -1,0 +1,15 @@
+PODS:
+  - YYKit (0.9.4):
+    - YYKit/no-arc (= 0.9.4)
+  - YYKit/no-arc (0.9.4)
+  - ZSSRichTextEditor (0.5.2.1)
+
+DEPENDENCIES:
+  - YYKit
+  - ZSSRichTextEditor
+
+SPEC CHECKSUMS:
+  YYKit: 6d41531048acfe3921ec08337bb71e1a7d9343d9
+  ZSSRichTextEditor: 56ed060d6d7a98fb6be9fceb8074ced22160349b
+
+COCOAPODS: 0.39.0
