@@ -33,6 +33,7 @@
 
 - (void)awesomeTextView:(NHAwesomeTextView *)textView willChangeHeight:(CGFloat)height;
 
+- (void)awesomeTextViewDidTappedDeleteBackwards;
 
 @end
 

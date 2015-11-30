@@ -24,6 +24,8 @@
 		C85369A71C0C2DFA000A7B1D /* NHTextEditorToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369A61C0C2DFA000A7B1D /* NHTextEditorToolBarCell.m */; };
 		C85369AA1C0C2F08000A7B1D /* NHUIStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369A91C0C2F08000A7B1D /* NHUIStyle.m */; };
 		C85369AF1C0C3B77000A7B1D /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369AE1C0C3B77000A7B1D /* DAKeyboardControl.m */; };
+		C85369B91C0C5D1A000A7B1D /* NHSwissingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369B81C0C5D1A000A7B1D /* NHSwissingUtils.m */; };
+		C85369BF1C0C6099000A7B1D /* YYTextView+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369BE1C0C6099000A7B1D /* YYTextView+Swizzle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,10 @@
 		C85369AD1C0C3B77000A7B1D /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
 		C85369AE1C0C3B77000A7B1D /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
 		C85369B01C0C3C42000A7B1D /* NHEditorHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NHEditorHeader.h; sourceTree = "<group>"; };
+		C85369B71C0C5D1A000A7B1D /* NHSwissingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHSwissingUtils.h; sourceTree = "<group>"; };
+		C85369B81C0C5D1A000A7B1D /* NHSwissingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHSwissingUtils.m; sourceTree = "<group>"; };
+		C85369BD1C0C6099000A7B1D /* YYTextView+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YYTextView+Swizzle.h"; sourceTree = "<group>"; };
+		C85369BE1C0C6099000A7B1D /* YYTextView+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYTextView+Swizzle.m"; sourceTree = "<group>"; };
 		D6579A2C2B50BD5043A87881 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -137,11 +143,15 @@
 				C85369711C0BF201000A7B1D /* AppDelegate.m */,
 				C85369731C0BF201000A7B1D /* ViewController.h */,
 				C85369741C0BF201000A7B1D /* ViewController.m */,
+				C85369BD1C0C6099000A7B1D /* YYTextView+Swizzle.h */,
+				C85369BE1C0C6099000A7B1D /* YYTextView+Swizzle.m */,
 				C85369921C0BFDA0000A7B1D /* NHTextEditorController.h */,
 				C85369931C0BFDA0000A7B1D /* NHTextEditorController.m */,
 				C85369B01C0C3C42000A7B1D /* NHEditorHeader.h */,
 				C853699B1C0C0DE1000A7B1D /* NHEditorControllerCell.h */,
 				C853699C1C0C0DE1000A7B1D /* NHEditorControllerCell.m */,
+				C85369B71C0C5D1A000A7B1D /* NHSwissingUtils.h */,
+				C85369B81C0C5D1A000A7B1D /* NHSwissingUtils.m */,
 				C85369951C0BFFFC000A7B1D /* NHTextEditorToolBar.h */,
 				C85369961C0BFFFC000A7B1D /* NHTextEditorToolBar.m */,
 				C85369A51C0C2DFA000A7B1D /* NHTextEditorToolBarCell.h */,
@@ -363,6 +373,8 @@
 				C85369A31C0C0F74000A7B1D /* NHInternalTextView.m in Sources */,
 				C85369751C0BF201000A7B1D /* ViewController.m in Sources */,
 				C853699A1C0C0C11000A7B1D /* NHTextEditorManager.m in Sources */,
+				C85369BF1C0C6099000A7B1D /* YYTextView+Swizzle.m in Sources */,
+				C85369B91C0C5D1A000A7B1D /* NHSwissingUtils.m in Sources */,
 				C85369941C0BFDA0000A7B1D /* NHTextEditorController.m in Sources */,
 				C85369A71C0C2DFA000A7B1D /* NHTextEditorToolBarCell.m in Sources */,
 				C85369971C0BFFFC000A7B1D /* NHTextEditorToolBar.m in Sources */,

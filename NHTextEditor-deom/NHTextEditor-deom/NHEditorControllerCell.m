@@ -14,12 +14,19 @@
 #import <Masonry.h>
 //utils
 
+#define key 0
 
 @interface NHEditorControllerCell ()<NHAwesomeTextViewDelegate, YYTextViewDelegate, UIKeyInput>
 
+#if key
 @property (strong, nonatomic) YYTextView *textView;
 
+#else
+@property (strong, nonatomic) NHAwesomeTextView *textView;
+
+#endif
 @end
+
 
 @implementation NHEditorControllerCell {
     CGFloat _currentTextViewHeight;
@@ -64,7 +71,7 @@
 }
 
 - (void)setPlaceHolder:(NSString *)placeHolder {
-    [self.textView setPlaceholderText:placeHolder];
+//    [self.textView setPlaceholderText:placeHolder];
     [self.textView becomeFirstResponder];
 }
 
@@ -82,8 +89,24 @@
     return YES;
 }
 - (void)textViewDidEndEditing:(YYTextView *)textView {
+    
 }
 
+
+#pragma mark - 
+- (BOOL)awesomeTextView:(NHAwesomeTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if (([@"\n" isEqualToString:text])) {
+        if ([delegate respondsToSelector:@selector(editorControllerCellDidEndEdit)]) {
+            [delegate editorControllerCellDidEndEdit];
+        }
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)awesomeTextViewShouldEndEditing:(NHAwesomeTextView *)textView {
+    return YES;
+}
 
 
 #pragma mark - Pravite method
@@ -99,7 +122,7 @@
         make.edges.mas_equalTo(self);
     }];
 }
-
+#if key
 - (YYTextView *)textView {
     if (!_textView) {
         _textView = [[YYTextView alloc] init];
@@ -109,5 +132,16 @@
     }
     return _textView;
 }
+#else
+- (NHAwesomeTextView *)textView {
+    if (!_textView) {
+        _textView = [[NHAwesomeTextView alloc] init];
+        _textView.returnKeyType = UIReturnKeyDefault;
+        _textView.font = [UIFont systemFontOfSize:15];
+        _textView.delegate = self;
+    }
+    return _textView;
+}
+#endif
 
 @end

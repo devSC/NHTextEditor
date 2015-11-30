@@ -56,4 +56,9 @@
     [super setContentOffset:contentOffset animated:animated];
 }
 
+
+- (void)deleteBackward {
+    
+    [super deleteBackward];
+}
 @end

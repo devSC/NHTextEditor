@@ -243,8 +243,9 @@
     self.textView.font = font;
     self.placeHolderLable.font = font;
 }
-#pragma clang diagnostic pop
 
+
+#pragma clang diagnostic pop
 
 - (void)setText:(NSString *)text {
     self.textView.text = text;
