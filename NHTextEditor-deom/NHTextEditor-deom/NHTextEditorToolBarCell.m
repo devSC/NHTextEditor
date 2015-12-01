@@ -22,7 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self.contentView addSubview:self.imageView];
-        [self.contentView addSubview:self.imageView];
+        [self.contentView addSubview:self.titleLabel];
         
         [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self.contentView);
@@ -35,6 +35,13 @@
     return self;
 }
 
+- (void)setCellData:(NSDictionary *)data {
+    self.titleLabel.text = data[@"name"];
+//    [self.titleLabel sizeToFit];
+}
+
+
+#pragma mark - Getter
 - (UIImageView *)imageView {
 
     if (!_imageView) {

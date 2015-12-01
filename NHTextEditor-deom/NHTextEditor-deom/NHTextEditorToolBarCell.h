@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) UIImageView *imageView;
 
+- (void)setCellData:(NSDictionary *)data;
+
 @end

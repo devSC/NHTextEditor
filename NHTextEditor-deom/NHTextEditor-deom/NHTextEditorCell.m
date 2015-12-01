@@ -70,6 +70,49 @@
     }
 }
 
+- (void)setTextStyle:(NSDictionary *)style {
+    /*
+     @{@"name" : @"左对齐",
+     @"image" : @"",
+     @"type" : @"textAligment",
+     @"value" : @"NSTextAlimentLeft",
+     },
+     @{@"name" : @"字体大小",
+     @"image" : @"",
+     @"type" : @"font",
+     @"value" : @[@"font_13",
+     @"font_15",
+     @"font_bold_17"]
+     },
+     @{@"name" : @"加引号",
+     @"image" : @"",
+     @"type" : @"",
+     @"value" : @"",
+     },
+     @{@"name" : @"添加超链接",
+     @"image" : @"",
+     @"type" : @"link",
+     @"value" : @"alertView",
+     },
+     @{@"name" : @"添加图片",
+     @"image" : @"",
+     @"type" : @"Action",
+     @"value" : @"AddImage",
+     */
+    
+    if ([style[@"name"] isEqualToString:@"左对齐"]) {
+        self.textView.textAlignment = NSTextAlignmentRight;
+    }
+    else if ([style[@"name"] isEqualToString:@"字体大小"]) {
+        self.textView.font = NHStyle.font_30;
+        //字体调节后,需要调整大小
+        [self adaptTextViewHeightIfNeed];
+    }
+    else if ([style[@"name"] isEqualToString:@"添加图片"]) {
+        NSLog(@"添加图片");
+    }
+}
+
 #pragma mark - YYTextViewDelegate
 - (BOOL)textView:(YYTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if (([@"\n" isEqualToString:text])) {
@@ -80,20 +123,21 @@
     }
     return YES;
 }
-
-- (void)textViewDidChange:(YYTextView *)textView {
-    if ([delegate respondsToSelector:@selector(editorCell:didChangeText:atIndexPath:)]) {
-        [delegate editorCell:self didChangeText:textView.text atIndexPath:self.indexPath];
-    }
-    
+- (void)adaptTextViewHeightIfNeed {
     //计算高度
-    CGSize textSize = [textView sizeThatFits:self.textView.bounds.size];
+    CGSize textSize = [self.textView sizeThatFits:self.textView.bounds.size];
     if (_currentTextViewHeight != textSize.height) {
         if ([delegate respondsToSelector:@selector(editorCell:willChangeHeight:)] ) {
             [delegate editorCell:self willChangeHeight:(textSize.height + kPadding * 2)];
         }
         _currentTextViewHeight = textSize.height;
     }
+}
+- (void)textViewDidChange:(YYTextView *)textView {
+    if ([delegate respondsToSelector:@selector(editorCell:didChangeText:atIndexPath:)]) {
+        [delegate editorCell:self didChangeText:textView.text atIndexPath:self.indexPath];
+    }
+    [self adaptTextViewHeightIfNeed];
 }
 - (BOOL)textViewShouldEndEditing:(YYTextView *)textView {
     return YES;

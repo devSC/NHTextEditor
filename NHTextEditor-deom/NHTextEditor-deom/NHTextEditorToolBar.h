@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol NHTextEditorToolBarDelegate <NSObject>
+
+- (void)textEditorToorBarDidSelectedItem:(NSDictionary *)item;
+
+@end
+
 @interface NHTextEditorToolBar : UIView
 
+@property (weak, nonatomic) id<NHTextEditorToolBarDelegate> delegate;
 
 
 @end

@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DJ-a9-Lhk">
-                                <rect key="frame" x="120" y="285" width="360" height="30"/>
+                                <rect key="frame" x="120" y="459" width="360" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.61915409480000005" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Editor">
@@ -47,7 +47,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUY-tt-ii0">
-                                <rect key="frame" x="120" y="329" width="360" height="30"/>
+                                <rect key="frame" x="120" y="503" width="360" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.61915409480000005" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="TableView">
@@ -62,7 +62,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5DJ-a9-Lhk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="16E-5V-hYt"/>
-                            <constraint firstItem="5DJ-a9-Lhk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="63t-K7-3BW"/>
+                            <constraint firstItem="5DJ-a9-Lhk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="174" id="63t-K7-3BW"/>
                             <constraint firstItem="IUY-tt-ii0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DOu-Qr-7Di"/>
                             <constraint firstItem="5DJ-a9-Lhk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rpf-DK-CpW"/>
                             <constraint firstItem="IUY-tt-ii0" firstAttribute="top" secondItem="5DJ-a9-Lhk" secondAttribute="bottom" constant="14" id="g5M-TM-gUh"/>
@@ -74,6 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="435" y="297"/>
         </scene>
     </scenes>
 </document>

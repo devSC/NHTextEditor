@@ -17,7 +17,7 @@
 #import "DAKeyboardControl.h"
 #import "NHEditorHeader.h"
 
-@interface NHTextEditorController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NHEditorControllerCellDelegate, UIKeyInput>
+@interface NHTextEditorController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NHEditorControllerCellDelegate, NHTextEditorToolBarDelegate>
 
 @property (strong, nonatomic) UICollectionView *collectionView;
 

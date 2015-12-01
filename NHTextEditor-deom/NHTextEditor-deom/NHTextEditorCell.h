@@ -27,6 +27,8 @@
 
 @property (weak, nonatomic) id<NHTextEditorCellDelegate> delegate;
 
+- (void)setTextStyle:(NSDictionary *)style;
+
 - (void)setPlaceHolder:(NSString *)placeHolder;
 
 - (void)textViewDidTappedDeleteBackwards;

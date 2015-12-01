@@ -25,6 +25,7 @@
 static NSString *kNHTextEditorToolBarCellIdenfitier = @"kNHTextEditorToolBarCell";
 
 @implementation NHTextEditorToolBar
+@synthesize delegate;
 
 - (instancetype)init
 {
@@ -54,11 +55,14 @@ static NSString *kNHTextEditorToolBarCellIdenfitier = @"kNHTextEditorToolBarCell
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NHTextEditorToolBarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kNHTextEditorToolBarCellIdenfitier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor redColor];
+    [cell setCellData:self.dataSource[indexPath.item]];
     return cell;
     
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if ([delegate respondsToSelector:@selector(textEditorToorBarDidSelectedItem:)]) {
+        [delegate textEditorToorBarDidSelectedItem:self.dataSource[indexPath.item]];
+    }
 }
 
 

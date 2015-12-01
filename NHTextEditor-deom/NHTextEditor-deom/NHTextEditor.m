@@ -14,7 +14,7 @@
 #import "DAKeyboardControl.h"
 #import "NHTextEditorHeader.h"
 
-@interface NHTextEditor ()<UITableViewDataSource, UITableViewDelegate, NHTextEditorCellDelegate>
+@interface NHTextEditor ()<UITableViewDataSource, UITableViewDelegate, NHTextEditorCellDelegate, NHTextEditorToolBarDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 
@@ -104,7 +104,11 @@ static NSString *kNHTextEditorCellIdeitifier = @"NHTextEditorCell";
     return [self.cellHeightSource[indexPath.row] floatValue];
 }
 
-#pragma mark -
+#pragma mark - NHTextEditorCellDelegate
+- (void)editorCell:(NHTextEditorCell *)cell didChangeText:(NSString *)text atIndexPath:(NSIndexPath *)indexPath {
+    self.firstResponderIndexPath = indexPath;
+}
+
 - (void)editorCell:(NHTextEditorCell *)cell willChangeHeight:(CGFloat)height {
     
     //找到.
@@ -112,23 +116,16 @@ static NSString *kNHTextEditorCellIdeitifier = @"NHTextEditorCell";
     
     if (cellHeight != height) {
         cellHeight = height;
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:cell.indexPath.item inSection:cell.indexPath.section];
-        
         [self.cellHeightSource replaceObjectAtIndex:cell.indexPath.item withObject:@(cellHeight)];
-        
-//        [self.collectionView performBatchUpdates:^{
-//            //获得当前layout对象. 修改高度,
-//            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
-//        } completion:^(BOOL finished) {
-//            NHEditorControllerCell *cell = (NHEditorControllerCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-//            [cell shouldBecomeFirstResponder];
-//        }];
     }
     else {
         
     }
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
+    
+    //
+    [self.tableView scrollToRowAtIndexPath:self.firstResponderIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (void)editorCellDidEndEdit {
@@ -173,6 +170,15 @@ static NSString *kNHTextEditorCellIdeitifier = @"NHTextEditorCell";
     [self.tableView endUpdates];
 
 }
+
+#pragma mark - NHTextEditorToolBarDelegate
+- (void)textEditorToorBarDidSelectedItem:(NSDictionary *)item {
+    NHTextEditorCell *cell = (NHTextEditorCell *)[self.tableView cellForRowAtIndexPath:self.firstResponderIndexPath];
+    //设置样式
+    [cell setTextStyle:item];
+
+}
+
 
 #pragma mark - Pravite method
 - (void)_initialDataSource {
@@ -220,6 +226,7 @@ static NSString *kNHTextEditorCellIdeitifier = @"NHTextEditorCell";
     if (!_editorToolBar) {
         _editorToolBar = [[NHTextEditorToolBar alloc] init];
         _editorToolBar.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.2];
+        _editorToolBar.delegate = self;
     }
     return _editorToolBar;
 }
