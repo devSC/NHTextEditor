@@ -88,6 +88,7 @@
 		FE22B5501C0D91E600618A7E /* NHTextEditorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHTextEditorCell.h; sourceTree = "<group>"; };
 		FE22B5511C0D91E600618A7E /* NHTextEditorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHTextEditorCell.m; sourceTree = "<group>"; };
 		FE22B5531C0D942100618A7E /* NHTextViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHTextViewProtocol.h; sourceTree = "<group>"; };
+		FE22B5551C0DA4FC00618A7E /* NHTextEditorHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHTextEditorHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +158,7 @@
 				C85369BE1C0C6099000A7B1D /* YYTextView+Swizzle.m */,
 				FE22B5531C0D942100618A7E /* NHTextViewProtocol.h */,
 				FE22B54D1C0D910F00618A7E /* NHTextEditor.h */,
+				FE22B5551C0DA4FC00618A7E /* NHTextEditorHeader.h */,
 				FE22B54E1C0D910F00618A7E /* NHTextEditor.m */,
 				FE22B5501C0D91E600618A7E /* NHTextEditorCell.h */,
 				FE22B5511C0D91E600618A7E /* NHTextEditorCell.m */,

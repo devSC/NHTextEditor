@@ -12,6 +12,7 @@
 #import <Masonry.h>
 #import "NHTextEditorToolBar.h"
 #import "DAKeyboardControl.h"
+#import "NHTextEditorHeader.h"
 
 @interface NHTextEditor ()<UITableViewDataSource, UITableViewDelegate, NHTextEditorCellDelegate>
 
@@ -31,7 +32,6 @@
 
 @end
 
-static CGFloat kNHEditorToolBarHeight = 49;
 static NSString *kNHTextEditorCellIdeitifier = @"NHTextEditorCell";
 
 @implementation NHTextEditor
