@@ -10,6 +10,8 @@
 
 #import "NHTextEditorController.h"
 
+#import "NHTextEditor.h"
+
 @interface ViewController ()
 
 @end
@@ -28,6 +30,11 @@
 - (IBAction)editorButton:(id)sender {
     NHTextEditorController *editorController = [[NHTextEditorController alloc] init];
     [self.navigationController pushViewController:editorController animated:YES];
+}
+- (IBAction)tableEditor:(id)sender {
+    NHTextEditor *editor = [[NHTextEditor alloc] init];
+    [self.navigationController pushViewController:editor animated:YES];
+    
 }
 
 @end

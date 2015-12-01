@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NHTextViewProtocol.h"
 @class NHEditorControllerCell;
 @protocol NHEditorControllerCellDelegate <NSObject>
 
@@ -19,7 +19,7 @@
 
 
 
-@interface NHEditorControllerCell : UICollectionViewCell
+@interface NHEditorControllerCell : UICollectionViewCell<NHTextViewProtocol>
 
 @property (strong, nonatomic) NSIndexPath *indexPath;
 

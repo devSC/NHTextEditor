@@ -41,12 +41,11 @@
     //
     NSLog(@"deleteBackWard");
 }
-
-- (void)setEditorCell:(NHEditorControllerCell *)editorCell {
+- (void)setEditorCell:(id<NHTextViewProtocol>)editorCell {
     objc_setAssociatedObject(self, @selector(editorCell), editorCell, OBJC_ASSOCIATION_ASSIGN);
-}
 
-- (NHEditorControllerCell *)editorCell {
+}
+- (id<NHTextViewProtocol>)editorCell {
     return objc_getAssociatedObject(self, _cmd);
 }
 @end
