@@ -7,9 +7,11 @@
 //
 
 #import <YYTextView.h>
-
+#import "NHEditorControllerCell.h"
 
 @interface YYTextView (Swizzle)
+
+@property (weak, nonatomic) NHEditorControllerCell *editorCell;
 
 
 

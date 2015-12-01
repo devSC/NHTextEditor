@@ -26,6 +26,7 @@
 		C85369AF1C0C3B77000A7B1D /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369AE1C0C3B77000A7B1D /* DAKeyboardControl.m */; };
 		C85369B91C0C5D1A000A7B1D /* NHSwissingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369B81C0C5D1A000A7B1D /* NHSwissingUtils.m */; };
 		C85369BF1C0C6099000A7B1D /* YYTextView+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369BE1C0C6099000A7B1D /* YYTextView+Swizzle.m */; };
+		FE22B5481C0D82EB00618A7E /* NHEditorTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE22B5471C0D82EB00618A7E /* NHEditorTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		C85369BD1C0C6099000A7B1D /* YYTextView+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YYTextView+Swizzle.h"; sourceTree = "<group>"; };
 		C85369BE1C0C6099000A7B1D /* YYTextView+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYTextView+Swizzle.m"; sourceTree = "<group>"; };
 		D6579A2C2B50BD5043A87881 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE22B5461C0D82EB00618A7E /* NHEditorTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHEditorTextView.h; sourceTree = "<group>"; };
+		FE22B5471C0D82EB00618A7E /* NHEditorTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHEditorTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,8 @@
 				C85369A61C0C2DFA000A7B1D /* NHTextEditorToolBarCell.m */,
 				C85369981C0C0C11000A7B1D /* NHTextEditorManager.h */,
 				C85369991C0C0C11000A7B1D /* NHTextEditorManager.m */,
+				FE22B5461C0D82EB00618A7E /* NHEditorTextView.h */,
+				FE22B5471C0D82EB00618A7E /* NHEditorTextView.m */,
 				C85369AC1C0C3B77000A7B1D /* DAKeyboardControl */,
 				C85369AB1C0C2F16000A7B1D /* NHUIStyle */,
 				C85369A41C0C0F7B000A7B1D /* TextVeiw */,
@@ -371,6 +376,7 @@
 				C85369AF1C0C3B77000A7B1D /* DAKeyboardControl.m in Sources */,
 				C85369AA1C0C2F08000A7B1D /* NHUIStyle.m in Sources */,
 				C85369A31C0C0F74000A7B1D /* NHInternalTextView.m in Sources */,
+				FE22B5481C0D82EB00618A7E /* NHEditorTextView.m in Sources */,
 				C85369751C0BF201000A7B1D /* ViewController.m in Sources */,
 				C853699A1C0C0C11000A7B1D /* NHTextEditorManager.m in Sources */,
 				C85369BF1C0C6099000A7B1D /* YYTextView+Swizzle.m in Sources */,
@@ -509,6 +515,7 @@
 			baseConfigurationReference = 861B2B98162C4FC3D032B0F8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "NHTextEditor-deom/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nihao.NHTextEditor-deom";

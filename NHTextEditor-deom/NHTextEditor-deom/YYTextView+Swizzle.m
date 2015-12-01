@@ -36,7 +36,17 @@
 
 - (void)swizz_deleteBackWard {
     [self swizz_deleteBackWard];
+    
+    [self.editorCell textViewDidTappedDeleteBackwards];
     //
     NSLog(@"deleteBackWard");
+}
+
+- (void)setEditorCell:(NHEditorControllerCell *)editorCell {
+    objc_setAssociatedObject(self, @selector(editorCell), editorCell, OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (NHEditorControllerCell *)editorCell {
+    return objc_getAssociatedObject(self, _cmd);
 }
 @end

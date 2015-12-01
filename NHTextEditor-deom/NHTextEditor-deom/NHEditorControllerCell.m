@@ -10,20 +10,26 @@
 #import "NHAwesomeTextView.h"
 
 #import <YYTextView.h>
+#import "NHEditorTextView.h"
 
 #import <Masonry.h>
+
+#import "YYTextView+Swizzle.h"
+
+
 //utils
 
-#define key 0
+#define key 1
 
-@interface NHEditorControllerCell ()<NHAwesomeTextViewDelegate, YYTextViewDelegate, UIKeyInput>
+@interface NHEditorControllerCell ()<NHAwesomeTextViewDelegate, YYTextViewDelegate>
 
 #if key
 @property (strong, nonatomic) YYTextView *textView;
 
 #else
-@property (strong, nonatomic) NHAwesomeTextView *textView;
-
+//@property (strong, nonatomic) NHAwesomeTextView *textView;
+@property (strong, nonatomic) NHEditorTextView *textView;
+//@property (strong, nonatomic) NHEditorTextView *textView;
 #endif
 @end
 
@@ -37,6 +43,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         [self _configureSubview];
         [self _configureSubviewConstraint];
 
@@ -59,15 +66,21 @@
         NSLog(@"can't end editor");
     }}
 
-- (void)prepareForReuse {
-//    self.textView = nil;
-    NSLog(@" %s ", __FUNCTION__);
-}
 - (void)shouldBeginEditor {
 //    if (!self.textView.isFirstResponder) {
         [self.textView becomeFirstResponder];
 //    }
     NSLog(@"becomeFirstResponder textView: %@", self.textView);
+}
+
+
+- (void)textViewDidTappedDeleteBackwards {
+    if (self.textView.text.length == 0) {
+        if ([delegate respondsToSelector:@selector(editorControllerCellShouldDeleteCell:)]) {
+            [delegate editorControllerCellShouldDeleteCell:self];
+        }
+    }
+    
 }
 
 - (void)setPlaceHolder:(NSString *)placeHolder {
@@ -85,6 +98,18 @@
     }
     return YES;
 }
+
+- (void)textViewDidChange:(YYTextView *)textView {
+    //计算高度
+    CGSize textSize = [textView sizeThatFits:self.textView.bounds.size];
+    if (_currentTextViewHeight != textSize.height) {
+        NSLog(@"%@", NSStringFromCGSize(textSize));
+        if ([delegate respondsToSelector:@selector(editorControllerCell:WillChangeHeight:)] ) {
+            [delegate editorControllerCell:self WillChangeHeight:textSize.height];
+        }
+        _currentTextViewHeight = textSize.height;
+    }
+}
 - (BOOL)textViewShouldEndEditing:(YYTextView *)textView {
     return YES;
 }
@@ -93,7 +118,16 @@
 }
 
 
+- (void)layoutSubviews {
+    NSLog(@"%@", NSStringFromCGRect(self.frame));
+    
+}
 #pragma mark - 
+- (void)awesomeTextView:(NHAwesomeTextView *)textView willChangeHeight:(CGFloat)height {
+    if ([delegate respondsToSelector:@selector(editorControllerCell:WillChangeHeight:)] ) {
+        [delegate editorControllerCell:self WillChangeHeight:height];
+    }
+}
 - (BOOL)awesomeTextView:(NHAwesomeTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if (([@"\n" isEqualToString:text])) {
         if ([delegate respondsToSelector:@selector(editorControllerCellDidEndEdit)]) {
@@ -108,6 +142,7 @@
     return YES;
 }
 
+#pragma mark -
 
 #pragma mark - Pravite method
 
@@ -129,19 +164,41 @@
         _textView.delegate = self;
         _textView.returnKeyType = UIReturnKeyDefault;
         _textView.font = [UIFont systemFontOfSize:15];
+        _textView.editorCell = self;
     }
     return _textView;
 }
 #else
-- (NHAwesomeTextView *)textView {
+//- (NHAwesomeTextView *)textView {
+//    if (!_textView) {
+//        _textView = [[NHAwesomeTextView alloc] init];
+//        _textView.returnKeyType = UIReturnKeyDefault;
+//        _textView.font = [UIFont systemFontOfSize:15];
+////        _textView.maxNumberOfLine = 10;
+//        _textView.delegate = self;
+//    }
+//    return _textView;
+//}
+- (NHEditorTextView *)textView {
     if (!_textView) {
-        _textView = [[NHAwesomeTextView alloc] init];
+        _textView = [[NHEditorTextView alloc] init];
         _textView.returnKeyType = UIReturnKeyDefault;
         _textView.font = [UIFont systemFontOfSize:15];
         _textView.delegate = self;
     }
     return _textView;
 }
+
+//- (UITextView *)textView {
+//    if (!_textView) {
+//        _textView = [[UITextView alloc] init];
+//        _textView.returnKeyType = UIReturnKeyDefault;
+//        _textView.font = [UIFont systemFontOfSize:15];
+////        _textView.delegate = self;
+//    }
+//    return _textView;
+//}
+
 #endif
 
 @end

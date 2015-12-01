@@ -38,7 +38,7 @@
         [self _initial];
         [self _configureSubviews];
         
-//        [self test];
+        //        [self test];
     }
     return self;
 }
@@ -94,7 +94,7 @@
     CGSize textSize = [textView sizeThatFits:self.textView.bounds.size];
     
     //比较高度是否到Max height
-    if (textSize.height > _max_height) {
+    if (_max_height != 0 && textSize.height > _max_height) {
         textSize.height = _max_height;
         
         if (!self.textView.scrollEnabled) {
@@ -115,16 +115,14 @@
     //这里, 更新INterna text view 的高度
     CGRect rect = self.textView.frame;
     rect.size.height = textSize.height;
-    NSLog(@"%@, rect: %@", NSStringFromCGRect(self.textView.frame), NSStringFromCGRect(rect));
     
-    if (CGRectGetHeight(self.textView.frame) == CGRectGetHeight(rect)) {
-        return;
-    }
     [UIView animateWithDuration:self.animationDuration
                           delay:0
                         options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
                          self.textView.frame = rect;
+//                         NSLog(@"%@", NSStringFromCGRect(self.textView.frame));
+                         NSLog(@"%@", NSStringFromCGRect(self.frame));
                      } completion:^(BOOL finished) {
                          
                      }];
@@ -159,8 +157,8 @@
     
 }
 - (void)test {
-        self.textView.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.3];
-        self.placeHolderLable.backgroundColor = [[UIColor cyanColor] colorWithAlphaComponent:0.4];
+    self.textView.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.3];
+    self.placeHolderLable.backgroundColor = [[UIColor cyanColor] colorWithAlphaComponent:0.4];
 }
 
 #pragma mark - Override
@@ -243,9 +241,8 @@
     self.textView.font = font;
     self.placeHolderLable.font = font;
 }
-
-
 #pragma clang diagnostic pop
+
 
 - (void)setText:(NSString *)text {
     self.textView.text = text;
@@ -311,10 +308,11 @@
 - (void)_setTextViewContentOffsetIfNeeds
 {
     CGRect caretRect = [self.textView caretRectForPosition:self.textView.selectedTextRange.end];
-//    NSLog(@"%@", NSStringFromCGRect(caretRect));
+//        NSLog(@"%@", NSStringFromCGRect(caretRect));
     CGFloat caretY =  MAX(caretRect.origin.y - self.textView.frame.size.height + caretRect.size.height + self.placeHolderLabelEdgeInsets.top, 0);
-//    if (self.textView.contentOffset.y < caretY && caretRect.origin.y != INFINITY)
+    if (self.textView.contentOffset.y < caretY && caretRect.origin.y != INFINITY) {
         [self.textView setContentOffset:CGPointMake(0, caretY) animated:YES];
+    }
 }
 
 - (void)_showPlaceHolderTextIfNeed {
@@ -344,7 +342,6 @@
         _textView.delegate = self;
         _textView.autocorrectionType = UITextAutocorrectionTypeNo;
         _textView.backgroundColor = [UIColor clearColor];
-        _textView.scrollsToTop = NO;
     }
     return _textView;
 }

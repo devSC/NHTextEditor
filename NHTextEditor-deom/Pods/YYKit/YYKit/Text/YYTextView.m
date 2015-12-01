@@ -2437,7 +2437,7 @@ typedef NS_ENUM(NSUInteger, YYTextMoveDirection) {
     } else {
         size.height = CGFLOAT_MAX;
     }
-    YYTextContainer *newContainer = _innerContainer.mutableCopy;
+    YYTextContainer *newContainer = _innerContainer.copy;
     newContainer.size = size;
     YYTextLayout *newLayout = [YYTextLayout layoutWithContainer:newContainer text:textLayout.text];
     CGSize newSize = newLayout.textBoundingSize;

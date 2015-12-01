@@ -28,6 +28,8 @@
 @property (strong, nonatomic) MASConstraint *toolBarBottomConstraint;
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
+@property (strong, nonatomic) NSMutableArray *cellHeightSource;
+
 
 @property (strong, nonatomic) NSIndexPath *firstResponderIndexPath; //记录那个Cell是第一响应者
 
@@ -69,6 +71,30 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 
 #pragma mark - 
 
+
+- (void)editorControllerCell:(NHEditorControllerCell *)cell WillChangeHeight:(CGFloat)height {
+    
+    //找到.
+    CGFloat cellHeight = [self.cellHeightSource[cell.indexPath.item] floatValue];
+
+    if (cellHeight != height) {
+        cellHeight = height;
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:cell.indexPath.item inSection:cell.indexPath.section];
+        
+        [self.cellHeightSource replaceObjectAtIndex:cell.indexPath.item withObject:@(cellHeight)];
+        [self.collectionView performBatchUpdates:^{
+            //获得当前layout对象. 修改高度,
+            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+        } completion:^(BOOL finished) {
+            NHEditorControllerCell *cell = (NHEditorControllerCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+            [cell shouldBecomeFirstResponder];
+        }];
+    }
+    else {
+    
+    }
+    
+}
 - (void)editorControllerCellDidEndEdit {
     /*
      插入一个新的Cell
@@ -76,6 +102,7 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
      */
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.dataSource.count inSection:0];
     [self.dataSource addObject:@"1"];
+    [self.cellHeightSource addObject:@(44)];
     [self.collectionView performBatchUpdates:^{
         [self.collectionView insertItemsAtIndexPaths:@[indexPath]];
         
@@ -85,7 +112,7 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
             self.firstResponderIndexPath = indexPath;
             [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
             //delay invoke, fix the reuse cell can't became first responder
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
                 NHEditorControllerCell *oldCell = (NHEditorControllerCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:(indexPath.item - 1) inSection:indexPath.section]];;
                 [oldCell shouldResignFirstResponder];
@@ -96,6 +123,29 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
         }
     }];
     
+}
+
+- (void)editorControllerCellShouldDeleteCell:(NHEditorControllerCell *)cell {
+    
+    //如果是第一行, 则不能删除
+    if (cell.indexPath.item == 0) {
+        return;
+    }
+    NSIndexPath *currentIndexPath = cell.indexPath;
+    NSIndexPath *preIndexPath = [NSIndexPath indexPathForItem:(cell.indexPath.item - 1) inSection:0];
+    NHEditorControllerCell *preCell = (NHEditorControllerCell *)[self.collectionView cellForItemAtIndexPath:preIndexPath];
+    [preCell shouldBecomeFirstResponder];
+
+    [self.collectionView performBatchUpdates:^{
+        [self.dataSource removeObjectAtIndex:currentIndexPath.item];
+        [self.cellHeightSource removeObjectAtIndex:currentIndexPath.item];
+        [self.collectionView deleteItemsAtIndexPaths:@[currentIndexPath]];
+    } completion:^(BOOL finished) {
+        //取上一个cell
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+        });
+    }];
 }
 
 
@@ -109,11 +159,10 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NHEditorControllerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NHEditorControllerCellIdenfitier forIndexPath:indexPath];
+    
     cell.delegate = self;
-    cell.backgroundColor = [UIColor whiteColor];
-//    if ([self _cellShouldBeginEditorAtIndexPath:indexPath]) {
-//        [cell shouldBecomeFirstResponder];
-//    }
+    cell.indexPath = indexPath;
+    
     [cell setPlaceHolder:[NSString stringWithFormat:@"section: %ld, item: %ld", indexPath.section, indexPath.row]];
                                                                                                                                                  
     return cell;
@@ -133,7 +182,7 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.view.width, 100);
+    return CGSizeMake(self.view.width, [self.cellHeightSource[indexPath.item] floatValue]);
 }
 
 
@@ -174,7 +223,7 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 
 - (void)_initialDataSource {
     [self.dataSource addObject:@""];
-    
+    [self.cellHeightSource addObject:@(44)];
     self.firstResponderIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
 }
 
@@ -230,6 +279,13 @@ static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
         _dataSource = [NSMutableArray array];
     }
     return _dataSource;
+}
+
+- (NSMutableArray *)cellHeightSource {
+    if (!_cellHeightSource) {
+        _cellHeightSource = [NSMutableArray array];
+    }
+    return _cellHeightSource;
 }
 /*
 #pragma mark - Navigation

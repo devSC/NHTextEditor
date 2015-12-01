@@ -8,15 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+@class NHEditorControllerCell;
 @protocol NHEditorControllerCellDelegate <NSObject>
 
 - (void)editorControllerCellDidEndEdit;
+- (void)editorControllerCell:(NHEditorControllerCell *)cell WillChangeHeight:(CGFloat)height;
+- (void)editorControllerCellShouldDeleteCell:(NHEditorControllerCell *)cell;
 
 @end
 
+
+
 @interface NHEditorControllerCell : UICollectionViewCell
 
+@property (strong, nonatomic) NSIndexPath *indexPath;
+
 @property (weak, nonatomic) id<NHEditorControllerCellDelegate> delegate;
+
+
+- (void)textViewDidTappedDeleteBackwards;
 
 - (void)setPlaceHolder:(NSString *)placeHolder;
 

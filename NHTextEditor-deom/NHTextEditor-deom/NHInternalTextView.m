@@ -29,7 +29,7 @@
 }
 
 - (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated {
-    //    NSLog(@"contentOffset: %@, self.bounds: %@", NSStringFromCGPoint(contentOffset), NSStringFromCGRect(self.bounds));
+//    NSLog(@"contentOffset: %@, self.bounds: %@", NSStringFromCGPoint(contentOffset), NSStringFromCGRect(self.bounds));
     if(self.tracking || self.decelerating){
         //initiated by user...
         
@@ -50,15 +50,10 @@
     }
     
     // Fix "overscrolling" bug
-    if (contentOffset.y > self.contentSize.height - self.frame.size.height && !self.decelerating && !self.tracking && !self.dragging)
+    if (contentOffset.y > self.contentSize.height - self.frame.size.height && !self.decelerating && !self.tracking && !self.dragging) {
         contentOffset = CGPointMake(contentOffset.x, self.contentSize.height - self.frame.size.height);
-    
+    }
     [super setContentOffset:contentOffset animated:animated];
 }
 
-
-- (void)deleteBackward {
-    
-    [super deleteBackward];
-}
 @end
