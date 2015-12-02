@@ -16,7 +16,7 @@
 
 @implementation NHTextEditorEntity
 
-+ (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"values" : [NHTextEditorValueEntity class]};
-}
+//+ (NSDictionary *)modelContainerPropertyGenericClass {
+//    return @{@"values" : [NHTextEditorValueEntity class]};
+//}
 @end

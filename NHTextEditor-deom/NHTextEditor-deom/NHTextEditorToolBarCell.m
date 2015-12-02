@@ -12,8 +12,11 @@
 
 @interface NHTextEditorToolBarCell ()
 
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UIButton *itemButton;
+@property (strong, nonatomic) UIButton *itemButton;
+
+@property (copy, nonatomic) ItemTappedBlock tappedBlock;
+
+@property (strong, nonatomic) NHTextEditorEntity *entity;
 
 @end
 
@@ -23,48 +26,49 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self.contentView addSubview:self.imageView];
-        [self.contentView addSubview:self.titleLabel];
-        
-        [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.contentView addSubview:self.itemButton];
+        [self.itemButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(self.contentView);
         }];
-        
-        [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(self.titleLabel);
-        }];
+
     }
     return self;
 }
 
-- (void)setCellData:(NHTextEditorEntity *)data {
-    self.titleLabel.text = data.name;
-    NSLog(@"%ld", data.type);
+- (void)setData:(NHTextEditorEntity *)data itemTappedBlock:(ItemTappedBlock)tappedBlock selected:(BOOL)select {
+    [self.itemButton setImage:[UIImage imageNamed:data.image] forState:UIControlStateNormal];
+    [self.itemButton setImage:[UIImage imageNamed:data.highlightedImage] forState:UIControlStateHighlighted];
+    [self.itemButton setImage:[UIImage imageNamed:data.highlightedImage] forState:UIControlStateSelected];
+
+    if (select) {
+        self.itemButton.selected = YES;
+    }
+    self.entity = data;
+    self.tappedBlock = tappedBlock;
 }
 
+- (void)setItemSelected:(BOOL)selected {
+    self.itemButton.selected = selected;
+}
+
+- (void)setCellData:(NHTextEditorEntity *)data itemTappedBlock:(ItemTappedBlock)tappedBlock {
+
+}
+
+- (void)itemButtonAction {
+    if (self.tappedBlock) {
+        self.tappedBlock(self.entity);
+    }
+}
 
 #pragma mark - Getter
-- (UIImageView *)imageView {
-
-    if (!_imageView) {
-        _imageView = [[UIImageView alloc] init];
-    }
-    return _imageView;
-}
 
 - (UIButton *)itemButton {
     if (!_itemButton) {
         _itemButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _itemButton.imageView.contentMode = UIViewContentModeCenter;
+        [_itemButton addTarget:self action:@selector(itemButtonAction) forControlEvents:UIControlEventTouchUpInside];
+//        _itemButton.imageView.contentMode = UIViewContentModeCenter;
     }
     return _itemButton;
-}
-- (UILabel *)titleLabel {
-    if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = NHStyle.font_10;
-        _titleLabel.textColor = NHStyle.blackColor_484848;
-    }
-    return _titleLabel;
 }
 @end

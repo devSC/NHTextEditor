@@ -12,6 +12,7 @@
 
 #import "NHUIStyle.h"
 #import <Masonry.h>
+#import "NHTextEditorManager.h"
 
 @interface NHTextEditorCell ()<YYTextViewDelegate>
 
@@ -123,6 +124,10 @@
 //    else if ([style[@"name"] isEqualToString:@"添加图片"]) {
 //        NSLog(@"添加图片");
 //    }
+    if (style.type == NHTextEditTypeBoldFont ||
+        style.type == NHTextEditTypeNormalFont) {
+        self.textView.font = [[NHTextEditorManager sharedInstance] fontForEditorEntity:style];
+    }
 }
 
 #pragma mark - YYTextViewDelegate
@@ -182,7 +187,7 @@
 //        _textView.frame = cellFrame;
         _textView.delegate = self;
         _textView.returnKeyType = UIReturnKeyDefault;
-        _textView.font = NHStyle.font_20;
+        _textView.font = NHStyle.font_15;
         _textView.editorCell = self;
         _textView.scrollEnabled = NO;
 //        _textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

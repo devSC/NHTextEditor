@@ -62,8 +62,12 @@ static NSString *kNHTextEditorCellIdeitifier = @"NHTextEditorCell";
     [self.view addKeyboardPanningWithFrameBasedActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
     
     } constraintBasedActionHandler:^(CGRect keyboardFrameInView, BOOL opening, BOOL closing) {
-        wself.toolBarBottomConstraint.offset = - CGRectGetHeight(keyboardFrameInView);
-        [wself.view layoutIfNeeded];
+        NSLog(@"%@", NSStringFromCGRect(keyboardFrameInView));
+//        if (CGRectGetMaxY(keyboardFrameInView) != (CGRectGetHeight(wself.view.frame) - 64)) {
+//            wself.toolBarBottomConstraint.offset = - CGRectGetHeight(keyboardFrameInView);
+            wself.toolBarBottomConstraint.offset = - (CGRectGetHeight(self.view.frame) - CGRectGetMinY(keyboardFrameInView));
+            [wself.view layoutIfNeeded];
+//        }
     }];
 
 }
@@ -173,10 +177,21 @@ static NSString *kNHTextEditorCellIdeitifier = @"NHTextEditorCell";
 
 #pragma mark - NHTextEditorToolBarDelegate
 - (void)textEditorToorBarDidSelectedItem:(NHTextEditorEntity *)item {
-    NHTextEditorCell *cell = (NHTextEditorCell *)[self.tableView cellForRowAtIndexPath:self.firstResponderIndexPath];
-    //设置样式
-    [cell setTextStyle:item];
-
+    if (item.type == NHTextEditTypeEndEdit) {
+        [self.view endEditing:YES];
+    }
+    else if (item.type == NHTextEditTypeImage) {
+    
+    }
+    else if (item.type == NHTextEditTypeVideo) {
+    
+    }
+    else {
+        NHTextEditorCell *cell = (NHTextEditorCell *)[self.tableView cellForRowAtIndexPath:self.firstResponderIndexPath];
+        //设置样式
+        [cell setTextStyle:item];
+   
+    }
 }
 
 

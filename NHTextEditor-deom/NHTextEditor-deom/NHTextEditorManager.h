@@ -23,8 +23,9 @@ return instance; \
 @interface NHTextEditorManager : NSObject
 SingletonDeclarationWithClass
 
-
 @property (strong, nonatomic) NSArray *tools;
+
+@property (nonatomic) NSUInteger defaultIndex; //默认index;
 
 - (UIFont *)fontForEditorEntity:(NHTextEditorEntity *)entity;
 

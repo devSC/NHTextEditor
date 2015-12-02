@@ -41,7 +41,7 @@
 @property (copy, nonatomic) NSString *name;     //名
 @property (copy, nonatomic) NSString *image;    //图
 @property (copy, nonatomic) NSString *highlightedImage;    //图
-
-@property (copy, nonatomic) NSArray *values;     //值
+@property (strong, nonatomic) NHTextEditorValueEntity *value;     //值
+//@property (copy, nonatomic) NSArray *values;     //值
 @property (nonatomic) NHTextEditType type;           //类型
 @end

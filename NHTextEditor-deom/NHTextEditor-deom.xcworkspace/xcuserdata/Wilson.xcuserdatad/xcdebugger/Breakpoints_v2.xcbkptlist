@@ -80,32 +80,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NHTextEditor-deom/NHTextEditorCell.m"
-            timestampString = "470718855.610058"
+            filePath = "NHTextEditor-deom/NHTextEditorToolBar.m"
+            timestampString = "470725176.32616"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "-setTextStyle:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NHTextEditor-deom/NHTextEditor.m"
-            timestampString = "470718890.748412"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "-textEditorToorBarDidSelectedItem:"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-collectionViewDidSelectedItem:indexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -115,29 +99,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NHTextEditor-deom/NHTextEditorManager.m"
-            timestampString = "470719579.354027"
+            filePath = "NHTextEditor-deom/NHTextEditorToolBar.m"
+            timestampString = "470725176.32616"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "-tools"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NHTextEditor-deom/NHTextEditorToolBarCell.m"
-            timestampString = "470719655.160341"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "-setCellData:"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-collectionViewDidSelectedItem:indexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

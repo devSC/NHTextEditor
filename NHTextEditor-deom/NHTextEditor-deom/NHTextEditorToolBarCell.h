@@ -10,10 +10,14 @@
 
 #import "NHTextEditorEntity.h"
 
+typedef void(^ItemTappedBlock)(NHTextEditorEntity *entity);
+
 @interface NHTextEditorToolBarCell : UICollectionViewCell
 
 @property (strong, nonatomic) UIImageView *imageView;
 
-- (void)setCellData:(NHTextEditorEntity *)data;
+- (void)setData:(NHTextEditorEntity *)data itemTappedBlock:(ItemTappedBlock)tappedBlock selected:(BOOL)select;
+
+- (void)setItemSelected:(BOOL)selected;
 
 @end
