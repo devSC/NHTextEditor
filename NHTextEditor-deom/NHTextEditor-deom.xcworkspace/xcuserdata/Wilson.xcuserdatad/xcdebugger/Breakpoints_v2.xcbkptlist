@@ -20,12 +20,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NHTextEditor-deom/NHTextEditorController.m"
-            timestampString = "470565555.770233"
+            timestampString = "470719460.58977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-editorControllerCellDidEndEdit"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-editorControllerCell:WillChangeHeight:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,13 +83,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NHTextEditor-deom/NHTextEditorController.m"
-            timestampString = "470570537.174747"
+            filePath = "NHTextEditor-deom/NHTextEditorCell.m"
+            timestampString = "470718855.610058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "-deleteBackward"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-setTextStyle:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -99,29 +99,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NHTextEditor-deom/NHTextEditorController.m"
-            timestampString = "470570541.216402"
+            filePath = "NHTextEditor-deom/NHTextEditor.m"
+            timestampString = "470718890.748412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "-hasText"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "-textEditorToorBarDidSelectedItem:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NHTextEditor-deom/NHTextEditorController.m"
-            timestampString = "470570542.243709"
+            filePath = "NHTextEditor-deom/NHTextEditorManager.m"
+            timestampString = "470719579.354027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "-insertText:"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-tools"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NHTextEditor-deom/NHTextEditorToolBarCell.m"
+            timestampString = "470719655.160341"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "-setCellData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

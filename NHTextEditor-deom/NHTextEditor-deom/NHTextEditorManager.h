@@ -6,7 +6,8 @@
 //  Copyright © 2015年 Wilson-Yuan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "NHTextEditorEntity.h"
 #define SingletonDeclarationWithClass +(instancetype)sharedInstance;
 #define SingletonImplementationWithClass \
 + (instancetype)sharedInstance {\
@@ -20,9 +21,11 @@ return instance; \
 
 
 @interface NHTextEditorManager : NSObject
+SingletonDeclarationWithClass
 
 
 @property (strong, nonatomic) NSArray *tools;
 
-SingletonDeclarationWithClass
+- (UIFont *)fontForEditorEntity:(NHTextEditorEntity *)entity;
+
 @end

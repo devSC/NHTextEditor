@@ -6,9 +6,17 @@
 //  Copyright © 2015年 Wilson-Yuan. All rights reserved.
 //
 
-#ifndef NHTextEditorHeader_h
-#define NHTextEditorHeader_h
-static CGFloat kNHEditorToolBarHeight = 49;
 
 
-#endif /* NHTextEditorHeader_h */
+typedef NS_ENUM(NSInteger, NHTextEditType) {
+    NHTextEditTypeFont = 0,     //改变字体大小
+    NHTextEditTypeOrder,        //前面加序列
+    NHTextEditTypeLink,         //超链接
+    NHTextEditTypeSeperate,     //分割线
+    NHTextEditTypeCall,         //@某人
+    NHTextEditTypeImage,        //插入图
+    NHTextEditTypeVideo,        //插入视频
+};
+
+
+static float kNHEditorToolBarHeight = 51;

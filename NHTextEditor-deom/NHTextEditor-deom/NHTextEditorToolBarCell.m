@@ -13,6 +13,8 @@
 @interface NHTextEditorToolBarCell ()
 
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIButton *itemButton;
+
 @end
 
 @implementation NHTextEditorToolBarCell
@@ -35,9 +37,9 @@
     return self;
 }
 
-- (void)setCellData:(NSDictionary *)data {
-    self.titleLabel.text = data[@"name"];
-//    [self.titleLabel sizeToFit];
+- (void)setCellData:(NHTextEditorEntity *)data {
+    self.titleLabel.text = data.name;
+    NSLog(@"%ld", data.type);
 }
 
 
@@ -50,6 +52,13 @@
     return _imageView;
 }
 
+- (UIButton *)itemButton {
+    if (!_itemButton) {
+        _itemButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _itemButton.imageView.contentMode = UIViewContentModeCenter;
+    }
+    return _itemButton;
+}
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];

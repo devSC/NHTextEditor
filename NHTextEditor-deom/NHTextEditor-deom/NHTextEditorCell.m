@@ -45,6 +45,8 @@
 
     // Configure the view for the selected state
 }
+
+#pragma mark - Public method
 - (void)textViewDidTappedDeleteBackwards {
     if (self.textView.text.length == 0) {
         if ([delegate respondsToSelector:@selector(editorCellShouldDeleteCell:)]) {
@@ -70,7 +72,10 @@
     }
 }
 
-- (void)setTextStyle:(NSDictionary *)style {
+- (void)setPlaceHolder:(NSString *)placeHolder {
+    [self.textView setPlaceholderText:placeHolder];
+}
+- (void)setTextStyle:(NHTextEditorEntity *)style {
     /*
      @{@"name" : @"左对齐",
      @"image" : @"",
@@ -99,18 +104,25 @@
      @"type" : @"Action",
      @"value" : @"AddImage",
      */
-    
-    if ([style[@"name"] isEqualToString:@"左对齐"]) {
-        self.textView.textAlignment = NSTextAlignmentRight;
-    }
-    else if ([style[@"name"] isEqualToString:@"字体大小"]) {
-        self.textView.font = NHStyle.font_30;
-        //字体调节后,需要调整大小
-        [self adaptTextViewHeightIfNeed];
-    }
-    else if ([style[@"name"] isEqualToString:@"添加图片"]) {
-        NSLog(@"添加图片");
-    }
+//    switch () {
+//        case <#constant#>:
+//            <#statements#>
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    if ([style[@"name"] isEqualToString:@"左对齐"]) {
+//        self.textView.textAlignment = NSTextAlignmentRight;
+//    }
+//    else if ([style[@"name"] isEqualToString:@"字体大小"]) {
+//        self.textView.font = NHStyle.font_30;
+//        //字体调节后,需要调整大小
+//        [self adaptTextViewHeightIfNeed];
+//    }
+//    else if ([style[@"name"] isEqualToString:@"添加图片"]) {
+//        NSLog(@"添加图片");
+//    }
 }
 
 #pragma mark - YYTextViewDelegate

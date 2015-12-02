@@ -15,6 +15,8 @@
 //utils
 #import <Masonry.h>
 #import "DAKeyboardControl.h"
+#import "NHTextEditorHeader.h"
+
 #import "NHEditorHeader.h"
 
 @interface NHTextEditorController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NHEditorControllerCellDelegate, NHTextEditorToolBarDelegate>
@@ -35,7 +37,6 @@
 
 @end
 
-static CGFloat kNHEditorToolBarHeight = 49;
 static NSString *NHEditorControllerCellIdenfitier = @"NHEditorControllerCell";
 
 @implementation NHTextEditorController

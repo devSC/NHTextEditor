@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "NHTextViewProtocol.h"
+
+#import "NHTextEditorEntity.h"
 
 @class NHTextEditorCell;
 @protocol NHTextEditorCellDelegate <NSObject>
@@ -27,12 +28,13 @@
 
 @property (weak, nonatomic) id<NHTextEditorCellDelegate> delegate;
 
-- (void)setTextStyle:(NSDictionary *)style;
+- (void)setTextStyle:(NHTextEditorEntity *)style;
 
 - (void)setPlaceHolder:(NSString *)placeHolder;
 
 - (void)textViewDidTappedDeleteBackwards;
 
+//Responder
 - (void)shouldBecomeFirstResponder;
 - (void)shouldResignFirstResponder;
 

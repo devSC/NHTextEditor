@@ -172,7 +172,7 @@ static NSString *kNHTextEditorCellIdeitifier = @"NHTextEditorCell";
 }
 
 #pragma mark - NHTextEditorToolBarDelegate
-- (void)textEditorToorBarDidSelectedItem:(NSDictionary *)item {
+- (void)textEditorToorBarDidSelectedItem:(NHTextEditorEntity *)item {
     NHTextEditorCell *cell = (NHTextEditorCell *)[self.tableView cellForRowAtIndexPath:self.firstResponderIndexPath];
     //设置样式
     [cell setTextStyle:item];

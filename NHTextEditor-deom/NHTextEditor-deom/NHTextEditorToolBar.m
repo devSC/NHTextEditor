@@ -12,7 +12,6 @@
 //utils
 #import <Masonry.h>
 #import "NHTextEditorHeader.h"
-#import "NHTextEditorManager.h"
 
 @interface NHTextEditorToolBar ()<UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -60,6 +59,11 @@ static NSString *kNHTextEditorToolBarCellIdenfitier = @"kNHTextEditorToolBarCell
     
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    //这里就要改变Cell上的东东
+    NHTextEditorToolBarCell *cell = (NHTextEditorToolBarCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    //取值
+    
+    
     if ([delegate respondsToSelector:@selector(textEditorToorBarDidSelectedItem:)]) {
         [delegate textEditorToorBarDidSelectedItem:self.dataSource[indexPath.item]];
     }

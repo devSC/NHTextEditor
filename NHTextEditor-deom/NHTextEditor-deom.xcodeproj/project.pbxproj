@@ -26,6 +26,7 @@
 		C85369AF1C0C3B77000A7B1D /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369AE1C0C3B77000A7B1D /* DAKeyboardControl.m */; };
 		C85369B91C0C5D1A000A7B1D /* NHSwissingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369B81C0C5D1A000A7B1D /* NHSwissingUtils.m */; };
 		C85369BF1C0C6099000A7B1D /* YYTextView+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = C85369BE1C0C6099000A7B1D /* YYTextView+Swizzle.m */; };
+		C8669B2D1C0E9048003A9D77 /* NHTextEditorEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = C8669B2C1C0E9048003A9D77 /* NHTextEditorEntity.m */; };
 		FE22B5481C0D82EB00618A7E /* NHEditorTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE22B5471C0D82EB00618A7E /* NHEditorTextView.m */; };
 		FE22B54F1C0D910F00618A7E /* NHTextEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = FE22B54E1C0D910F00618A7E /* NHTextEditor.m */; };
 		FE22B5521C0D91E600618A7E /* NHTextEditorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE22B5511C0D91E600618A7E /* NHTextEditorCell.m */; };
@@ -80,6 +81,8 @@
 		C85369B81C0C5D1A000A7B1D /* NHSwissingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHSwissingUtils.m; sourceTree = "<group>"; };
 		C85369BD1C0C6099000A7B1D /* YYTextView+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YYTextView+Swizzle.h"; sourceTree = "<group>"; };
 		C85369BE1C0C6099000A7B1D /* YYTextView+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYTextView+Swizzle.m"; sourceTree = "<group>"; };
+		C8669B2B1C0E9048003A9D77 /* NHTextEditorEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHTextEditorEntity.h; sourceTree = "<group>"; };
+		C8669B2C1C0E9048003A9D77 /* NHTextEditorEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHTextEditorEntity.m; sourceTree = "<group>"; };
 		D6579A2C2B50BD5043A87881 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE22B5461C0D82EB00618A7E /* NHEditorTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHEditorTextView.h; sourceTree = "<group>"; };
 		FE22B5471C0D82EB00618A7E /* NHEditorTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHEditorTextView.m; sourceTree = "<group>"; };
@@ -247,6 +250,8 @@
 				C85369A61C0C2DFA000A7B1D /* NHTextEditorToolBarCell.m */,
 				C85369981C0C0C11000A7B1D /* NHTextEditorManager.h */,
 				C85369991C0C0C11000A7B1D /* NHTextEditorManager.m */,
+				C8669B2B1C0E9048003A9D77 /* NHTextEditorEntity.h */,
+				C8669B2C1C0E9048003A9D77 /* NHTextEditorEntity.m */,
 			);
 			name = NHTextEditorToolBar;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				C85369B91C0C5D1A000A7B1D /* NHSwissingUtils.m in Sources */,
 				C85369941C0BFDA0000A7B1D /* NHTextEditorController.m in Sources */,
 				C85369A71C0C2DFA000A7B1D /* NHTextEditorToolBarCell.m in Sources */,
+				C8669B2D1C0E9048003A9D77 /* NHTextEditorEntity.m in Sources */,
 				FE22B54F1C0D910F00618A7E /* NHTextEditor.m in Sources */,
 				C85369971C0BFFFC000A7B1D /* NHTextEditorToolBar.m in Sources */,
 				C85369A21C0C0F74000A7B1D /* NHAwesomeTextView.m in Sources */,

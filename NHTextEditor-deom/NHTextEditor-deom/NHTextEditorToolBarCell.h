@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "NHTextEditorEntity.h"
+
 @interface NHTextEditorToolBarCell : UICollectionViewCell
 
 @property (strong, nonatomic) UIImageView *imageView;
 
-- (void)setCellData:(NSDictionary *)data;
+- (void)setCellData:(NHTextEditorEntity *)data;
 
 @end

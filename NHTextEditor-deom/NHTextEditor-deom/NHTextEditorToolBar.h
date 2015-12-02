@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NHTextEditorManager.h"
 
 @protocol NHTextEditorToolBarDelegate <NSObject>
 
-- (void)textEditorToorBarDidSelectedItem:(NSDictionary *)item;
+- (void)textEditorToorBarDidSelectedItem:(NHTextEditorEntity *)item;
 
 @end
 
